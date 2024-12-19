@@ -14,14 +14,15 @@ jobs:
 
     steps:
     # Paso 1: Configurar Sparse Checkout
-    - name: Sparse Checkout
-      run: |
-        git init
-        git remote add origin https://github.com/Crash0015/GitOps.git
-        git config core.sparseCheckout true
-        echo "Dockerfile" >> .git/info/sparse-checkout
-        echo "app/" >> .git/info/sparse-checkout
-        git pull origin main
+- name: Sparse Checkout
+  run: |
+    git init
+    git remote add origin https://github.com/Crash0015/GitOps.git
+    git config core.sparseCheckout true
+    echo "Dockerfile" >> .git/info/sparse-checkout
+    echo "app/" >> .git/info/sparse-checkout
+    echo "requirements.txt" >> .git/info/sparse-checkout  # Agrega requirements.txt
+    git pull origin main
 
     # Paso 2: Loguearse en Docker Hub
     - name: Log in to DockerHub
